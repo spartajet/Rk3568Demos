@@ -1,22 +1,85 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
-  <author/>
-  <comment/>
-  <exportmacro/>
-  <class>LedControlWidget</class>
-  <widget class="QWidget" name="LedControlWidget">
-    <property name="geometry">
-      <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>400</width>
-        <height>300</height>
-      </rect>
-    </property>
-    <property name="windowTitle">
-      <string>LedControlWidget</string>
-    </property>
+ <class>LedControlWidget</class>
+ <widget class="QWidget" name="LedControlWidget">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>400</width>
+    <height>300</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>LedControlWidget</string>
+  </property>
+  <widget class="QPushButton" name="initialButton">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>80</y>
+     <width>80</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>初始化</string>
+   </property>
   </widget>
-  <pixmapfunction/>
-  <connections/>
+  <widget class="QPushButton" name="controlButton">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>180</x>
+     <y>80</y>
+     <width>80</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>亮</string>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>initialButton</sender>
+   <signal>clicked()</signal>
+   <receiver>LedControlWidget</receiver>
+   <slot>onInitialButtonClick()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>63</x>
+     <y>90</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>350</x>
+     <y>181</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>controlButton</sender>
+   <signal>clicked()</signal>
+   <receiver>LedControlWidget</receiver>
+   <slot>onControlButtonClick()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>228</x>
+     <y>92</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>372</x>
+     <y>118</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>onInitialButtonClick()</slot>
+  <slot>onControlButtonClick()</slot>
+ </slots>
 </ui>

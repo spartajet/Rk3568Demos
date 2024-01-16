@@ -6,6 +6,7 @@
 #define LEDCONTROLWIDGET_H
 
 #include <QWidget>
+#include <QFile>
 
 
 QT_BEGIN_NAMESPACE
@@ -21,6 +22,14 @@ public:
 
 private:
     Ui::LedControlWidget *ui;
+    QFile ledFile;
+    bool ledExist;
+    bool ledState;
+    void GetLedState();
+    void SetLedState(bool state);
+private slots:
+    void onInitialButtonClick();
+    void onControlButtonClick();
 };
 
 
