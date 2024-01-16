@@ -3,11 +3,11 @@
 //
 
 // You may need to build the project (run Qt uic code generator) to get "ui_LedControlWidget.h" resolved
-
+#define __arm__ true
 #include "ledcontrolwidget.h"
 #include "ui_LedControlWidget.h"
 #include <QDebug>
-
+#include <QScreen>
 
 LedControlWidget::LedControlWidget(QWidget *parent) : QWidget(parent), ui(new Ui::LedControlWidget) {
     ui->setupUi(this);
@@ -15,7 +15,7 @@ LedControlWidget::LedControlWidget(QWidget *parent) : QWidget(parent), ui(new Ui
      * 种方法获取屏幕分辨率，防上多屏设备导致对应不上
      * 注意，这是获取整个桌面系统的分辨率
      */
-    QList<QScreen *> list_screen = QGuiApplication::screens();
+    QList<QScreen*> list_screen = QGuiApplication::screens();
 #if __arm__
     this->resize(list_screen.at(0)->geometry().width(),list_screen.at(0)->geometry().height());
 
@@ -42,6 +42,7 @@ void LedControlWidget::GetLedState() {
         this->ui->initialButton->setText("Open Led File Failed");
         return;
     }
+    this->ui->controlButton->setEnabled(true);
     QTextStream in(&this->ledFile);
     QString line = in.readLine();
     if (line == "0") {
@@ -83,6 +84,7 @@ void LedControlWidget::onInitialButtonClick() {
         this->ledExist = false;
         return;
     }
+    this->ledExist=true;
     this->GetLedState();
 }
 
