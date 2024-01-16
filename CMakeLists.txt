@@ -23,13 +23,16 @@ else ()
             PATHS "/opt/atk-dlrk356x-toolchain/aarch64-buildroot-linux-gnu/sysroot/usr/lib/")
 endif ()
 
-find_package(Qt5 COMPONENTS
-        Core
-        Gui
-        Widgets
-        REQUIRED
-        PATHS "/opt/atk-dlrk356x-toolchain/aarch64-buildroot-linux-gnu/sysroot/usr/lib/"
-)
+
 
 add_subdirectory(led)
-#add_executable(Rk3568Demos main.cpp)
+#add_executable(Rk3568Demos
+#        main.cpp)
+
+target_link_libraries(led
+        Qt5::Core
+        Qt5::Gui
+        Qt5::Widgets)
+
+
+
