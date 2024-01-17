@@ -26,13 +26,14 @@ endif ()
 
 
 add_subdirectory(led)
+add_subdirectory(key)
 #add_executable(Rk3568Demos
 #        main.cpp)
 
-target_link_libraries(led
-        Qt5::Core
-        Qt5::Gui
-        Qt5::Widgets)
+#target_link_libraries(led
+#        Qt5::Core
+#        Qt5::Gui
+#        Qt5::Widgets)
 
 
 
